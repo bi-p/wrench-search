@@ -1,0 +1,47 @@
+{% if mobile %}
+    <header style="font-family: 'JetBrains Mono',sans-serif;">
+        <div class="bz1lBb">
+            <form class="Pg70bf" id="search-form" method="POST">
+                <div class="H0PQec" style="width: 100%;">
+                    <div class="sbc esbc autocomplete">
+                        <input id="search-bar" autocapitalize="none" autocomplete="off" class="noHIxc" name="q"
+                               spellcheck="false" type="text" value="{{ query }}">
+                        <input name="tbm" value="{{ search_type }}" style="display: none">
+                        <div class="sc"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </header>
+{% else %}
+    <header>
+        <div class="logo-div">
+            <a class="logo-link" href="/">
+            </a>
+        </div>
+        <div class="search-div">
+            <form id="search-form" class="search-form" id="sf" method="POST">
+                <div class="autocomplete" style="width: 100%; flex: 1">
+                    <div>
+                        <input id="search-bar" autocapitalize="none" autocomplete="off" class="noHIxc" name="q"
+                               spellcheck="false" type="text" value="{{ query }}">
+                        <input name="tbm" value="{{ search_type }}" style="display: none">
+                        <div class="sc"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </header>
+{% endif %}
+
+<script>
+    const searchBar = document.getElementById("search-bar");
+
+    searchBar.addEventListener("keyup", function (event) {
+        if (event.keyCode !== 13) {
+            handleUserInput(searchBar);
+        } else {
+            document.getElementById("search-form").submit();
+        }
+    });
+</script>
